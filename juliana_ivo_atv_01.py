@@ -1,7 +1,3 @@
-#Função potencia:
-# b: base 
-# e: expoente
-
 def soma_klenne(a,b):
     def sucessor(x):
         return x + 1
@@ -11,20 +7,24 @@ def soma_klenne(a,b):
 
     return resultado
 
-def multiplicacao (a, b):
+def multiplicacao_kleene (a, b):
     resultado = 0
     for contador in range(b):
         resultado = soma_klenne(resultado, a)
         
     return resultado
 
-def potencia (b, e):
+#b: base / e: expoente
+def potencia_kleene (b, e):
     for contator in range (e):
-        resultado_anterior = potencia (b, e - 1)
+        resultado_anterior = potencia_kleene (b, e - 1)
 
-        resultado_final = multiplicacao(b, resultado_anterior)
+        resultado_final = multiplicacao_kleene(b, resultado_anterior)
 
         return resultado_final
     
     return 1    #caso base: a^0 = 1
 
+print(potencia_kleene(4, 2))  # 16
+print(potencia_kleene(5, 2))  # 25
+print(potencia_kleene(6, 0))  # 1
