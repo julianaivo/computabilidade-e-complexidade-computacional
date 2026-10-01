@@ -1,0 +1,36 @@
+multiplica x1 x2 =  x1 * x2
+ 
+fatorial :: Integer -> Integer
+fatorial 0 = 1
+fatorial n | n > 0 = n * fatorial (n - 1)
+           | otherwise = error "Fatorial não definido para números negativos"
+ 
+multSomas :: Int -> Int -> Int
+multSomas a 0 = 0
+multSomas a b = a + multSomas a (b - 1)
+ 
+exponen :: Int -> Int -> Int
+exponen a 0 = 1
+exponen a b = multSomas a (exponen a (b-1))
+ 
+divSub :: Int -> Int -> Int
+divSub a 1 = a
+divSub a b | a >= b = 1 + divSub (a-b) b
+           | otherwise = 0
+ 
+logaritmo :: Int -> Int -> Int
+logaritmo a b
+  | a < b     = 0
+  | otherwise = 1 + logaritmo (divSub a b) b
+ 
+dobro x = x * 2
+ 
+main = do
+  print(4*6)
+  print(multiplica 20 2)
+  print(fatorial 3)
+  print(dobro 8)
+  print(multSomas 7 9)
+  print(exponen 2 3)
+  print(logaritmo 100 10)
+  print(divSub 755 5)
